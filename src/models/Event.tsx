@@ -3,6 +3,11 @@ class Event {
     id: number;
     start: Date; // format: "hh:mm"
     duration: number; // format minutes
+    top: number = 0;
+    height: number = 0;
+    width: number = 0;
+    left: number = 0;
+    backgroundColor: string = "lightblue";
 
     constructor(id: number, start: string, duration: number) {
         this.id = id;

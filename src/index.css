@@ -5,9 +5,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #1e293b;
+  color: #fff;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.calendar-container {
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.hour-labels {
+  padding-left: 10px;
+  box-sizing: border-box;
+  background-color: #0f172a;
+  border-right: 5px solid #0f172a;
+  overflow-y: auto;
+  height: 100%;
+  font-weight: bold;
 }
