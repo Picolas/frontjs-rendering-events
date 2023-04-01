@@ -1,16 +1,27 @@
 import Event from "../../models/Event";
 import {dateToMinute} from "../utils";
 
-export function calculateEventPosition(events: Event[], event: Event) {
+export function calculateEventPosition(events: Event[], event: Event, containerWidth: number) {
     const overlappingEvents = findOverlappingEvents(events, event);
 
     const maxWidth = 100;
-    const width = maxWidth / overlappingEvents.length;
+    const maxLevel = Math.max(...overlappingEvents.map((e) => e.level));
+    const width = maxWidth / (maxLevel + 1);
 
-    const index = overlappingEvents.findIndex((e) => e.id === event.id);
-    const left = index * width;
+    const left = event.level * width;
 
     return { left, width };
+}
+
+export function assignLevels(events: Event[]) {
+    events.forEach((event) => {
+        const overlappingEvents = findOverlappingEvents(events, event);
+        let level = 0;
+        while (overlappingEvents.some((e) => e.level === level)) {
+            level++;
+        }
+        event.level = level;
+    });
 }
 
 export function findOverlappingEvents(events: Event[], targetEvent: Event): Event[] {
@@ -23,7 +34,8 @@ export function findOverlappingEvents(events: Event[], targetEvent: Event): Even
         return (
             (eventStart >= targetStart && eventStart < targetEnd) ||
             (eventEnd > targetStart && eventEnd <= targetEnd) ||
-            (eventStart < targetStart && eventEnd > targetEnd)
+            (eventStart < targetStart && eventEnd > targetEnd) ||
+            (eventStart <= targetStart && eventEnd >= targetEnd)
         );
     });
 }

@@ -22,7 +22,7 @@ function EventsList({ events, containerWidth, containerHeight }: EventsListProps
         const endTime = startTime + event.duration;
         const top = ((startTime - calendarStart) / calendarDuration) * containerHeight;
         const height = (event.duration / calendarDuration) * containerHeight;
-        const { left, width } = calculateEventPosition(events, event);
+        const { left, width } = calculateEventPosition(events, event, containerWidth);
         const backgroundColor = getRandomColor();
 
         return {
