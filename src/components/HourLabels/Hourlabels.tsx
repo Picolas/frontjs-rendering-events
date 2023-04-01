@@ -13,7 +13,7 @@ function HourLabels({ containerHeight }: HourLabelsProps) {
         hours.push(i);
     }
 
-    const hourHeight = containerHeight / (calendarEnd - calendarStart);
+    const hourHeight = (containerHeight / (calendarEnd - calendarStart + 1));
 
     return (
         <div className="hour-labels">
