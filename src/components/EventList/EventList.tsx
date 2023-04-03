@@ -68,7 +68,7 @@ function EventsList({ events, containerWidth, containerHeight }: EventsListProps
     events = updateEvents(events);
 
     return (
-        <div>
+        <>
             {events.map((event: Event) => (
                 <EventComponent
                     key={event.id}
@@ -82,7 +82,7 @@ function EventsList({ events, containerWidth, containerHeight }: EventsListProps
                     backgroundColor={event.backgroundColor}
                 />
             ))}
-        </div>
+        </>
     );
 }
 
