@@ -24,8 +24,6 @@ function Calendar() {
     const events: Event[] = EventService.getInstance().getEvents();
     // sort events by start and duration
     EventService.getInstance().sortEvents(events);
-    // assign levels to events
-    EventService.getInstance().assignLevels(events);
 
     return (
         <div className="calendar-day" style={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>

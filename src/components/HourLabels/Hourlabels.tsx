@@ -18,9 +18,9 @@ function HourLabels({ containerHeight }: HourLabelsProps) {
     return (
         <div className="hour-labels">
             {hours.map((hour) => (
-                <div key={hour} style={{ lineHeight: `${hourHeight}px` }}>
+                <li key={hour} style={{ lineHeight: `${hourHeight}px` }}>
                     {hour}:00
-                </div>
+                </li>
             ))}
         </div>
     );

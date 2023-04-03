@@ -18,12 +18,12 @@ function EventComponent({ id, start, duration, top, height, width, left, backgro
         height: `${height}px`,
         left: `${left}%`,
         width: `${width}%`,
-        position: 'absolute',
         backgroundColor,
         fontWeight: 'bold',
         justifyContent: 'center',
         alignItems: 'center',
         display: 'flex',
+        border: '1px solid black',
     };
 
     return (

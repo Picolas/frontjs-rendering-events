@@ -1,43 +1,39 @@
 import Event from "../../models/Event";
 import {dateToMinute} from "../utils";
 
-export function calculateEventPosition(events: Event[], event: Event, containerWidth: number) {
-    const overlappingEvents = findOverlappingEvents(events, event);
-
-    const maxWidth = 100;
-    const maxLevel = Math.max(...overlappingEvents.map((e) => e.level));
-    const width = maxWidth / (maxLevel + 1);
-
-    const left = event.level * width;
-
-    return { left, width };
+export function checkOverlapping(events: Event[]) {
+    events.forEach((event, indexI) => {
+        events.forEach((otherEvent, indexJ) => {
+            if(isOverlapping(event, otherEvent)) {
+                event.cols.push(indexJ);
+                if (indexI > indexJ) {
+                    event.colsBefore.push(indexJ);
+                }
+            }
+        });
+    });
+    return events;
 }
 
-export function assignLevels(events: Event[]) {
-    events.forEach((event) => {
-        const overlappingEvents = findOverlappingEvents(events, event);
-        let level = 0;
-        while (overlappingEvents.some((e) => e.level === level)) {
-            level++;
+export function isOverlapping(eventA: Event, eventB: Event) {
+    const eventAStart = dateToMinute(eventA.start);
+    const eventAEnd = eventAStart + eventA.duration;
+    const eventBStart = dateToMinute(eventB.start);
+    const eventBEnd = eventBStart + eventB.duration;
+
+    return (
+        eventAEnd > eventBStart && eventAStart < eventBEnd
+    );
+}
+
+export function addConflictsToGroup(event: Event, eventsArray: Event[], conflictGroup: number[], conflictGroupColumns: number[]) {
+    for (let k=0; k < event.cols.length; k++) {
+        if (conflictGroup.indexOf(event.cols[k]) === -1) {
+            conflictGroup.push(event.cols[k]);
+            conflictGroupColumns.push(eventsArray[event.cols[k]].column);
+            addConflictsToGroup(eventsArray[event.cols[k]], eventsArray, conflictGroup, conflictGroupColumns);
         }
-        event.level = level;
-    });
-}
-
-export function findOverlappingEvents(events: Event[], targetEvent: Event): Event[] {
-    const targetStart = dateToMinute(targetEvent.start);
-    const targetEnd = targetStart + targetEvent.duration;
-
-    return events.filter((event: Event) => {
-        const eventStart = dateToMinute(event.start);
-        const eventEnd = eventStart + event.duration;
-        return (
-            (eventStart >= targetStart && eventStart < targetEnd) ||
-            (eventEnd > targetStart && eventEnd <= targetEnd) ||
-            (eventStart < targetStart && eventEnd > targetEnd) ||
-            (eventStart <= targetStart && eventEnd >= targetEnd)
-        );
-    });
+    }
 }
 
 export function displayTime(start: Date, duration: number) {

@@ -3,7 +3,10 @@ class Event {
     id: number;
     start: Date; // format: "hh:mm"
     duration: number; // format minutes
-    level: number = 0;
+    cols: number[] = [];
+    colsBefore: number[] = [];
+    column: number = 0;
+    totalColumns: number = 0;
     top: number = 0;
     height: number = 0;
     width: number = 0;

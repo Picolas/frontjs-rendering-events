@@ -1,6 +1,5 @@
 import Event from "../models/Event";
 import eventsJson from "../data/input.json";
-import { assignLevels } from "../utils/Event/EventUtils";
 
 class EventService {
     // singleton
@@ -46,10 +45,6 @@ class EventService {
             }
             return a.start.getHours() - b.start.getHours();
         });
-    }
-
-    assignLevels(events: Event[]) {
-        assignLevels(events);
     }
 }
 
