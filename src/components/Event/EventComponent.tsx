@@ -9,7 +9,7 @@ interface EventProps {
     height: number;
     width: number;
     left: number;
-    backgroundColor: string;
+    backgroundColor: any;
 }
 
 function EventComponent({ id, start, duration, top, height, width, left, backgroundColor }: EventProps) {
@@ -18,7 +18,8 @@ function EventComponent({ id, start, duration, top, height, width, left, backgro
         height: `${height}px`,
         left: `${left}px`,
         width: `${width}px`,
-        backgroundColor,
+        backgroundColor: backgroundColor.color,
+        boxShadow: `inset 0 0 0 2px ${backgroundColor.darkerColor}`,
     };
 
     return (

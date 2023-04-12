@@ -53,12 +53,10 @@ code {
 }
 
 .event {
-  -webkit-box-shadow:inset 0px 0px 0px 1px black;
-  -moz-box-shadow:inset 0px 0px 0px 1px black;
-  box-shadow:inset 0px 0px 0px 1px black;
   font-weight: bold;
   justify-content: center;
   align-items: center;
   display: flex;
   position: absolute;
+  border-radius: 6px;
 }

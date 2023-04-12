@@ -2,7 +2,7 @@ export function dateToMinute(date: Date) {
     return date.getHours() * 60 + date.getMinutes();
 }
 
-export function getRandomColor(): string {
+export function getRandomColor(): { color: string, darkerColor: string } {
     const colors = [
         '#818cf8',
         '#a78bfa',
@@ -11,5 +11,18 @@ export function getRandomColor(): string {
         '#fb7185',
     ];
 
-    return colors[Math.floor(Math.random() * colors.length)];
+    const darkerColors = [
+        '#5e66b6',
+        '#7a68bd',
+        '#9464c0',
+        '#b7568b',
+        '#c55c69',
+    ]
+
+    const random = Math.floor(Math.random() * colors.length);
+
+    return {
+        color: colors[random],
+        darkerColor: darkerColors[random],
+    }
 }

@@ -7,7 +7,7 @@ class Event {
     height: number = 0;
     width: number = 0;
     left: number = 0;
-    backgroundColor: string = "lightblue";
+    backgroundColor: any = "";
 
     constructor(id: number, start: string, duration: number) {
         this.id = id;
