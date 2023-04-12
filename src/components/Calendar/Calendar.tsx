@@ -1,6 +1,6 @@
 import EventService from "../../services/EventService";
 import Event from "../../models/Event";
-import {useEffect, useState} from "react";
+import {useEffect, useMemo, useState} from "react";
 import EventList from "../EventList/EventList";
 import HourLabels from "../HourLabels/Hourlabels";
 
@@ -15,15 +15,16 @@ function Calendar() {
             setContainerHeight(window.innerHeight);
         };
 
-        console.log(containerHeight)
-
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     const events: Event[] = EventService.getInstance().getEvents();
     // sort events by start and duration
-    EventService.getInstance().sortEvents(events);
+    // use memo to avoid unnecessary re-rendering
+    useMemo(() => {
+        EventService.getInstance().sortEvents(events);
+    }, [events]);
 
     return (
         <div className="calendar-day" style={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>

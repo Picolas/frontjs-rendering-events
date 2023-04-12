@@ -16,14 +16,9 @@ function EventComponent({ id, start, duration, top, height, width, left, backgro
     const style: CSSProperties = {
         top: `${top}px`,
         height: `${height}px`,
-        left: `${left}%`,
-        width: `${width}%`,
-        position: 'absolute',
+        left: `${left}px`,
+        width: `${width}px`,
         backgroundColor,
-        fontWeight: 'bold',
-        justifyContent: 'center',
-        alignItems: 'center',
-        display: 'flex',
     };
 
     return (
