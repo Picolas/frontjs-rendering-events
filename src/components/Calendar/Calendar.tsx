@@ -2,7 +2,7 @@ import EventService from "../../services/EventService";
 import Event from "../../models/Event";
 import {useEffect, useMemo, useState} from "react";
 import EventList from "../EventList/EventList";
-import HourLabels from "../HourLabels/Hourlabels";
+import HourLabels from "../HourLabels/HourLabels";
 
 function Calendar() {
 
