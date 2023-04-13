@@ -28,10 +28,10 @@ code {
   box-sizing: border-box;
   background-color: #0f172a;
   border-right: 5px solid #0f172a;
-  overflow-y: auto;
   height: 100%;
   font-weight: bold;
   list-style-type: none;
+  overflow: hidden;
 }
 
 .hour-labels li {
