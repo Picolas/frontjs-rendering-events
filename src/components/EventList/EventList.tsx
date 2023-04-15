@@ -11,7 +11,7 @@ interface EventsListProps {
 
 function EventsList({ events, containerWidth, containerHeight }: EventsListProps) {
 
-    // fonction to get the width of the hour labels container (.hour-labels)
+    // function to get the width of the hour labels container (.hour-labels)
     function getHourLabelsContainerWidth() {
         const hourLabels = document.querySelector('.hour-labels');
         if (hourLabels) {
@@ -20,14 +20,14 @@ function EventsList({ events, containerWidth, containerHeight }: EventsListProps
         return 0;
     }
 
-    const columns: Event[][] = useMemo(
+    const columns: Event[] = useMemo(
         () => groupOverlappingEvents(events, containerWidth - getHourLabelsContainerWidth(), containerHeight),
         [events, containerWidth, containerHeight]
     );
 
     return (
         <div>
-            {columns.flat().map((event: Event) => (
+            {columns.map((event: Event) => (
                 <EventComponent
                     key={event.id}
                     id={event.id}

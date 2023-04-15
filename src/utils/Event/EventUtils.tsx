@@ -72,13 +72,25 @@ export function groupOverlappingEvents(events: Event[], containerWidth: number, 
             lastHighestEndTime = endTime;
         }
 
-        if (columns.length === 0) {
+        if (columns.length > 0) {
             columns = groupEvents(columns, containerWidth, containerHeight);
             result = result.concat(columns);
         }
     });
 
-    return result;
+    return removeDuplicatedEvents(result);
+}
+
+// function to remove all duplacate events with the same event.id
+export function removeDuplicatedEvents(events: Event[][]) {
+    const eventsFlat: Event[] = events.flat()
+    const uniqueEvents: Event[] = [];
+    eventsFlat.forEach((event: Event) => {
+        if (!uniqueEvents.some((e: Event) => e.id === event.id)) {
+            uniqueEvents.push(event);
+        }
+    });
+    return uniqueEvents;
 }
 
 function isOverlapping(eventA: Event, eventB: Event) {
