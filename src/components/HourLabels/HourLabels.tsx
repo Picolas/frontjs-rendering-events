@@ -5,7 +5,7 @@ interface HourLabelsProps {
     containerHeight: number;
 }
 
-function HourLabels({ containerHeight }: HourLabelsProps) {
+const HourLabels = ({ containerHeight }: HourLabelsProps) => {
     const calendarStart = DAY_START_HOUR; // 09:00
     const calendarEnd = DAY_END_HOUR; // 21:00
     const hours = [];

@@ -9,7 +9,7 @@ interface EventsListProps {
     containerHeight: number;
 }
 
-function EventsList({ events, containerWidth, containerHeight }: EventsListProps) {
+const EventsList = ({ events, containerWidth, containerHeight }: EventsListProps) => {
 
     // function to get the width of the hour labels container (.hour-labels)
     function getHourLabelsContainerWidth() {

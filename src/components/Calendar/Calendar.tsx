@@ -4,8 +4,7 @@ import {useEffect, useMemo, useState} from "react";
 import EventList from "../EventList/EventList";
 import HourLabels from "../HourLabels/HourLabels";
 
-function Calendar() {
-
+const Calendar = () => {
     const [containerWidth, setContainerWidth] = useState(window.innerWidth);
     const [containerHeight, setContainerHeight] = useState(window.innerHeight);
 

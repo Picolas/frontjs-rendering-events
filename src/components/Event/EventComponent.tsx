@@ -12,7 +12,7 @@ interface EventProps {
     backgroundColor: any;
 }
 
-function EventComponent({ id, start, duration, top, height, width, left, backgroundColor }: EventProps) {
+const EventComponent = ({ id, start, duration, top, height, width, left, backgroundColor }: EventProps) => {
     const style: CSSProperties = {
         top: `${top}px`,
         height: `${height}px`,
