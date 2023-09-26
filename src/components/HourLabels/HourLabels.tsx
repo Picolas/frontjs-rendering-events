@@ -1,9 +1,6 @@
 import React from 'react';
 import {DAY_END_HOUR, DAY_START_HOUR} from "../../constants/constants";
-
-interface HourLabelsProps {
-    containerHeight: number;
-}
+import HourLabelsProps from "../../interfaces/HourLabelsProps";
 
 const HourLabels = ({ containerHeight }: HourLabelsProps) => {
     const calendarStart = DAY_START_HOUR; // 09:00

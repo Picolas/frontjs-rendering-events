@@ -1,16 +1,6 @@
 import {CSSProperties} from "react";
 import {displayTime} from "../../utils/Event/EventUtils";
-
-interface EventProps {
-    id: number;
-    start: Date;
-    duration: number;
-    top: number;
-    height: number;
-    width: number;
-    left: number;
-    backgroundColor: any;
-}
+import EventProps from "../../interfaces/EventProps";
 
 const EventComponent = ({ id, start, duration, top, height, width, left, backgroundColor }: EventProps) => {
     const style: CSSProperties = {

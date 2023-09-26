@@ -2,12 +2,7 @@ import Event from "../../models/Event";
 import EventComponent from "../Event/EventComponent";
 import {groupOverlappingEvents} from "../../utils/Event/EventUtils";
 import {useMemo} from "react";
-
-interface EventsListProps {
-    events: Event[];
-    containerWidth: number;
-    containerHeight: number;
-}
+import EventsListProps from "../../interfaces/EventListProps";
 
 const EventsList = ({ events, containerWidth, containerHeight }: EventsListProps) => {
 
