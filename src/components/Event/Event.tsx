@@ -1,8 +1,18 @@
-import {CSSProperties} from "react";
-import {displayTime} from "../../utils/Event/EventUtils";
-import EventProps from "../../interfaces/EventProps";
+import { CSSProperties } from "react";
+import { displayTime } from "../../utils/EventUtils";
 
-const EventComponent = ({ id, start, duration, top, height, width, left, backgroundColor }: EventProps) => {
+interface EventProps {
+    id: number;
+    start: Date;
+    duration: number;
+    top: number;
+    height: number;
+    width: number;
+    left: number;
+    backgroundColor: any;
+}
+
+export const Event = ({ id, start, duration, top, height, width, left, backgroundColor }: EventProps) => {
     const style: CSSProperties = {
         top: `${top}px`,
         height: `${height}px`,
@@ -18,5 +28,3 @@ const EventComponent = ({ id, start, duration, top, height, width, left, backgro
         </div>
     )
 }
-
-export default EventComponent;

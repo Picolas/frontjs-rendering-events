@@ -1,43 +1,30 @@
-import EventService from "../../services/EventService";
-import Event from "../../models/Event";
-import {useEffect, useMemo, useState} from "react";
-import EventList from "../EventList/EventList";
-import HourLabels from "../HourLabels/HourLabels";
+import { memo, useEffect } from "react";
+import { EventsList } from "../EventsList/EventsList";
+import { HourLabels } from "../HourLabels/HourLabels";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { useEvents } from "../../contexts/EventContext";
 
-const Calendar = () => {
-    const [containerWidth, setContainerWidth] = useState(window.innerWidth);
-    const [containerHeight, setContainerHeight] = useState(window.innerHeight);
+export const Calendar = memo(() => {
+    const { width: containerWidth, height: containerHeight } = useWindowSize();
+    const { events, sortEvents } = useEvents();
 
     useEffect(() => {
-        const handleResize = () => {
-            setContainerWidth(window.innerWidth);
-            setContainerHeight(window.innerHeight);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const events: Event[] = EventService.getInstance().getEvents();
-    // sort events by start and duration
-    // use memo to avoid unnecessary re-rendering
-    useMemo(() => {
-        EventService.getInstance().sortEvents(events);
-    }, [events]);
+        sortEvents();
+    }, [sortEvents]);
 
     return (
         <div className="calendar-day" style={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>
             <HourLabels containerHeight={containerHeight} />
 
             <div style={{ position: 'relative' }}>
-                <EventList
+                <EventsList
                     events={events}
                     containerWidth={containerWidth}
                     containerHeight={containerHeight}
                 />
             </div>
         </div>
-  )
-}
+    )
+})
 
-export default Calendar
+Calendar.displayName = 'Calendar';

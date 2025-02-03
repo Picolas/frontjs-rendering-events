@@ -1,20 +1,33 @@
-class Event {
-
+export interface Event {
     id: number;
-    start: Date; // format: "hh:mm"
-    duration: number; // format minutes
-    top: number = 0;
-    height: number = 0;
-    width: number = 0;
-    left: number = 0;
-    backgroundColor: any = "";
-
-    constructor(id: number, start: string, duration: number) {
-        this.id = id;
-        // set hours and minutes to date object
-        this.start = new Date(new Date().setHours(parseInt(start.split(":")[0]), parseInt(start.split(":")[1])));
-        this.duration = duration;
-    }
+    start: Date;
+    duration: number; // en minutes
+    top: number;
+    height: number;
+    width: number;
+    left: number;
+    backgroundColor: {
+        color: string;
+        darkerColor: string;
+    };
 }
 
-export default Event;
+export function createEvent(id: number, startTime: string, duration: number): Event {
+    const [hours, minutes] = startTime.split(':').map(Number);
+    const start = new Date();
+    start.setHours(hours, minutes, 0, 0);
+
+    return {
+        id,
+        start,
+        duration,
+        top: 0,
+        height: 0,
+        width: 0,
+        left: 0,
+        backgroundColor: {
+            color: '',
+            darkerColor: ''
+        }
+    };
+};

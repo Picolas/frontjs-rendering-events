@@ -1,10 +1,15 @@
-import Event from "../../models/Event";
-import EventComponent from "../Event/EventComponent";
-import {groupOverlappingEvents} from "../../utils/Event/EventUtils";
-import {useMemo} from "react";
-import EventsListProps from "../../interfaces/EventListProps";
+import { Event } from "../../models/Event";
+import { Event as EventComponent } from "../Event/Event";
+import { groupOverlappingEvents } from "../../utils/EventUtils";
+import { useMemo } from "react";
 
-const EventsList = ({ events, containerWidth, containerHeight }: EventsListProps) => {
+interface EventsListProps {
+    events: Event[];
+    containerWidth: number;
+    containerHeight: number;
+}
+
+export const EventsList = ({ events, containerWidth, containerHeight }: EventsListProps) => {
 
     // function to get the width of the hour labels container (.hour-labels)
     function getHourLabelsContainerWidth() {
@@ -38,5 +43,3 @@ const EventsList = ({ events, containerWidth, containerHeight }: EventsListProps
         </div>
     );
 }
-
-export default EventsList;
