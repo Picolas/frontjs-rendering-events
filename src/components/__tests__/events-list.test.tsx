@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { EventsList } from '../EventsList/EventsList';
+import { EventsList } from '../events-list/events-list';
 import { Event } from '../../models/Event';
-import { groupOverlappingEvents } from '../../utils/EventUtils';
+import { groupOverlappingEvents } from '../../utils/event-utils';
 
 // Mock des modules
-jest.mock('../../utils/EventUtils', () => ({
+jest.mock('../../utils/event-utils', () => ({
   groupOverlappingEvents: jest.fn().mockImplementation((events) => events)
 }));
 
-jest.mock('../Event/Event', () => ({
+jest.mock('../event/event', () => ({
   Event: ({ id, start, duration }: any) => (
     <div data-testid={`event-${id}`}>
       {`${start.getHours()}:${String(start.getMinutes()).padStart(2, '0')} - ${duration}min`}
@@ -59,7 +59,7 @@ describe('EventsList', () => {
   });
 
   it('devrait rendre tous les événements', () => {
-    const { groupOverlappingEvents } = require('../../utils/EventUtils');
+    const { groupOverlappingEvents } = require('../../utils/event-utils');
     groupOverlappingEvents.mockReturnValueOnce(mockEvents);
 
     render(
@@ -75,7 +75,7 @@ describe('EventsList', () => {
   });
 
   it('devrait appeler groupOverlappingEvents avec les bonnes dimensions', () => {
-    const { groupOverlappingEvents } = require('../../utils/EventUtils');
+    const { groupOverlappingEvents } = require('../../utils/event-utils');
     groupOverlappingEvents.mockReturnValueOnce(mockEvents);
 
     render(
@@ -94,7 +94,7 @@ describe('EventsList', () => {
   });
 
   it('devrait mémoriser le résultat de groupOverlappingEvents', () => {
-    const { groupOverlappingEvents } = require('../../utils/EventUtils');
+    const { groupOverlappingEvents } = require('../../utils/event-utils');
     groupOverlappingEvents.mockReturnValue(mockEvents);
 
     const { rerender } = render(
@@ -119,7 +119,7 @@ describe('EventsList', () => {
   });
 
   it('devrait recalculer quand les dimensions changent', () => {
-    const { groupOverlappingEvents } = require('../../utils/EventUtils');
+    const { groupOverlappingEvents } = require('../../utils/event-utils');
     groupOverlappingEvents.mockReturnValue(mockEvents);
 
     const { rerender } = render(

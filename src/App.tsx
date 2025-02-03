@@ -1,6 +1,6 @@
 import './assets/css/App.css';
-import { Calendar } from "./components/Calendar/Calendar";
-import { EventProvider } from './contexts/EventContext';
+import { Calendar } from "./components/calendar/calendar";
+import { EventProvider } from './contexts/event-context';
 
 function App() {
   return (

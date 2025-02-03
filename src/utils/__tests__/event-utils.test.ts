@@ -1,7 +1,6 @@
 import { Event } from '../../models/Event';
-import { dateToMinute } from '../EventUtils';
-import { displayTime } from '../EventUtils';
-import { groupOverlappingEvents } from '../EventUtils';
+import { groupOverlappingEvents } from '../event-utils';
+import { dateToMinute, displayTime } from '../utils';
 
 describe('EventUtils', () => {
   describe('displayTime', () => {

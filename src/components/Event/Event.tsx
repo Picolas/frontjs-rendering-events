@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { displayTime } from "../../utils/EventUtils";
+import { displayTime } from "../../utils/utils";
 
 interface EventProps {
     id: number;

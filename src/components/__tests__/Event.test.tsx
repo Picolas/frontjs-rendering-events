@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { Event } from '../Event/Event';
+import { Event } from '../event/event';
 
 describe('Event', () => {
   const defaultProps = {

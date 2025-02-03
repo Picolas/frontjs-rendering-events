@@ -1,8 +1,8 @@
 import { memo, useEffect } from "react";
-import { EventsList } from "../EventsList/EventsList";
-import { HourLabels } from "../HourLabels/HourLabels";
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { useEvents } from "../../contexts/EventContext";
+import { EventsList } from "../events-list/events-list";
+import { HourLabels } from "../hour-labels/hour-labels";
+import { useWindowSize } from "../../hooks/use-window-size";
+import { useEvents } from "../../contexts/event-context";
 
 export const Calendar = memo(() => {
     const { width: containerWidth, height: containerHeight } = useWindowSize();

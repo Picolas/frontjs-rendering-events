@@ -1,6 +1,6 @@
 import { render, screen, act } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { EventProvider, useEvents } from '../EventContext';
+import { EventProvider, useEvents } from '../event-context';
 import { Event } from '../../models/Event';
 
 jest.mock('../../data/input.json', () => ([

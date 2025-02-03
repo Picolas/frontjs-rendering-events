@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Calendar } from '../Calendar/Calendar';
-import { useWindowSize } from '../../hooks/useWindowSize';
-import { useEvents } from '../../contexts/EventContext';
+import { Calendar } from '../calendar/calendar';
+import { useWindowSize } from '../../hooks/use-window-size';
+import { useEvents } from '../../contexts/event-context';
 
-jest.mock('../../hooks/useWindowSize', () => ({
+jest.mock('../../hooks/use-window-size', () => ({
   useWindowSize: jest.fn()
 }));
 
-jest.mock('../../contexts/EventContext', () => ({
+jest.mock('../../contexts/event-context', () => ({
   useEvents: jest.fn()
 }));
 
-jest.mock('../EventsList/EventsList', () => ({
+jest.mock('../events-list/events-list', () => ({
   EventsList: ({ events, containerWidth, containerHeight }: any) => (
     <div data-testid="events-list">
       <span data-testid="events-list-width">Width: {containerWidth}</span>
@@ -22,7 +22,7 @@ jest.mock('../EventsList/EventsList', () => ({
   )
 }));
 
-jest.mock('../HourLabels/HourLabels', () => ({
+jest.mock('../hour-labels/hour-labels', () => ({
   HourLabels: ({ containerHeight }: any) => (
     <div data-testid="hour-labels">
       <span data-testid="hour-labels-height">Height: {containerHeight}</span>

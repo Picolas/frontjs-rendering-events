@@ -1,6 +1,6 @@
 import { Event } from "../../models/Event";
-import { Event as EventComponent } from "../Event/Event";
-import { groupOverlappingEvents } from "../../utils/EventUtils";
+import { Event as EventComponent } from "../event/event";
+import { groupOverlappingEvents } from "../../utils/event-utils";
 import { useMemo } from "react";
 
 interface EventsListProps {

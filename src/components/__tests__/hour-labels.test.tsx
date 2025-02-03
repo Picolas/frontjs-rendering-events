@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { HourLabels } from '../HourLabels/HourLabels';
+import { HourLabels } from '../hour-labels/hour-labels';
 import { DAY_START_HOUR, DAY_END_HOUR } from '../../constants/constants';
 
 describe('HourLabels', () => {
